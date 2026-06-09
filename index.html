@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aarish Rangrez — Social Media Manager & Content Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #0D0D0D;
+      --cream:    #F2EDE6;
+      --red:      #FF4D4D;
+      --red-dim:  rgba(255,77,77,0.12);
+      --muted:    rgba(242,237,230,0.55);
+      --muted2:   rgba(242,237,230,0.18);
+      --body-bg:  #F7F5F2;
+      --card-bg:  #FFFFFF;
+      --text:     #1A1A1A;
+      --text-mid: #444;
+      --text-muted:#777;
+      --border:   rgba(0,0,0,0.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--body-bg); color: var(--text); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(13,13,13,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 0.5px solid rgba(255,255,255,0.07);
+      height: 58px;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:var(--cream); letter-spacing:2px; }
+    .nav-logo span { color:var(--red); }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { font-size:13px; color:var(--muted); text-decoration:none; letter-spacing:.5px; transition:color .2s; }
+    .nav-links a:hover { color:var(--cream); }
+    .nav-cta {
+      font-size:12px; padding:7px 18px; border-radius:20px;
+      border:1px solid var(--red); color:var(--red); text-decoration:none;
+      transition:background .2s, color .2s; letter-spacing:.3px;
+    }
+    .nav-cta:hover { background:var(--red); color:#fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 clamp(1.25rem,5vw,3rem) 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-ring {
+      position:absolute; border-radius:50%; border:1.5px solid rgba(255,77,77,0.15);
+      pointer-events:none;
+    }
+    .hr1 { width:580px; height:580px; top:-140px; right:-140px; }
+    .hr2 { width:340px; height:340px; top:-50px;  right:-50px; }
+    .hr3 { width:140px; height:140px; top:70px;   right:70px; border-color:rgba(255,77,77,0.3); }
+
+    .hero-eyebrow { font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color:var(--red); margin-bottom:1.25rem; font-weight:500; }
+    .hero-name {
+      font-family:'Bebas Neue',sans-serif;
+      font-size: clamp(4.5rem,13vw,10.5rem);
+      line-height:.88; color:var(--cream); margin-bottom:2.25rem;
+    }
+    .hero-name .r { color:var(--red); display:block; }
+
+    .hero-bottom { display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; flex-wrap:wrap; }
+    .hero-tagline { font-size:clamp(.95rem,1.8vw,1.1rem); color:var(--muted); font-weight:300; max-width:440px; line-height:1.75; }
+    .hero-tagline strong { color:var(--cream); font-weight:500; }
+    .hero-pills { display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+    .hero-pill { font-size:12px; border:0.5px solid var(--muted2); border-radius:20px; padding:5px 16px; color:var(--muted); letter-spacing:.3px; }
+    .hero-pill.live { border-color:var(--red); color:var(--red); display:flex; align-items:center; gap:6px; }
+    .hero-pill.live::before {
+      content:''; width:6px; height:6px; background:var(--red); border-radius:50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.65)} }
+
+    /* ── TICKER ── */
+    .ticker-wrap { background:var(--red); overflow:hidden; padding:12px 0; }
+    .ticker-inner { display:inline-flex; animation:scroll-ticker 30s linear infinite; }
+    .tw { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:2.5px; color:rgba(255,255,255,.9); padding:0 2rem; }
+    .ts { color:rgba(255,255,255,.38); font-size:.5rem; align-self:center; padding-right:2rem; }
+    @keyframes scroll-ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── GENERIC SECTION ── */
+    section { padding: 6rem clamp(1.25rem,5vw,3rem); }
+    .inner { max-width:1120px; margin:0 auto; }
+    .slabel {
+      font-size:10px; letter-spacing:3.5px; text-transform:uppercase;
+      color:var(--text-muted); font-weight:500; margin-bottom:3rem;
+      display:flex; align-items:center; gap:1rem;
+    }
+    .slabel::after { content:''; flex:1; height:.5px; background:var(--border); }
+    .slabel.lt { color:rgba(242,237,230,.35); }
+    .slabel.lt::after { background:rgba(255,255,255,.08); }
+
+    /* ── ABOUT ── */
+    #about { background:var(--body-bg); }
+    .about-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:5rem; align-items:start; }
+    .about-head { font-family:'Bebas Neue',sans-serif; font-size:clamp(2.4rem,4.5vw,3.8rem); line-height:1.02; color:var(--ink); margin-bottom:1.75rem; }
+    .about-head .a { color:var(--red); }
+    .about-p { font-size:1rem; line-height:1.85; color:var(--text-muted); margin-bottom:1.15rem; }
+    .about-p strong { color:var(--text); font-weight:500; }
+    .stats-box { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+    .sbox { background:var(--card-bg); padding:1.75rem 1.5rem; text-align:center; }
+    .snum { font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--red); line-height:1; margin-bottom:6px; }
+    .slbl { font-size:12px; color:var(--text-muted); letter-spacing:.3px; }
+
+    /* ── SKILLS (dark) ── */
+    #skills { background:var(--ink); }
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5px; background:rgba(255,255,255,.06); }
+    .skb { background:var(--ink); padding:2.5rem 2rem; transition:background .25s; cursor:default; }
+    .skb:hover { background:#161616; }
+    .skn-big { font-family:'Bebas Neue',sans-serif; font-size:3.5rem; color:rgba(255,77,77,.15); line-height:1; margin-bottom:1.15rem; }
+    .skname { font-size:1rem; font-weight:500; color:var(--cream); margin-bottom:.5rem; }
+    .skdesc { font-size:13px; color:var(--muted); line-height:1.65; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background:var(--body-bg); }
+    .exp-list { display:flex; flex-direction:column; gap:1.5px; }
+    .exp-item {
+      display:grid; grid-template-columns:58px 1fr auto;
+      gap:1.75rem; align-items:center;
+      background:var(--card-bg); padding:1.75rem 2.25rem;
+      border-bottom:.5px solid var(--border);
+      transition:background .2s;
+    }
+    .exp-item:first-child { border-radius:16px 16px 0 0; }
+    .exp-item:last-child  { border-radius:0 0 16px 16px; border-bottom:none; }
+    .exp-item:hover { background:#FAFAF8; }
+    .elogo {
+      width:50px; height:50px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Bebas Neue',sans-serif; font-size:.9rem; letter-spacing:1px; flex-shrink:0;
+    }
+    .el-serri  { background:var(--red); color:#fff; }
+    .el-fc     { background:var(--ink); color:var(--cream); }
+    .el-fe     { background:#f2f2f0; color:var(--ink); border:1px solid var(--border); }
+    .el-ens    { background:#1a3d2b; color:#7edaa8; }
+    .el-sip    { background:#1a2a4a; color:#7eb8d4; }
+    .el-sch    { background:#f5f0e8; color:var(--ink); border:1px solid var(--border); }
+    .erole  { font-size:.975rem; font-weight:500; color:var(--text); margin-bottom:3px; }
+    .ecomp  { font-size:13px; color:var(--text-muted); }
+    .edate  { font-size:12px; color:var(--text-muted); text-align:right; white-space:nowrap; }
+    .ebadge {
+      display:inline-block; font-size:10px; padding:3px 10px;
+      background:var(--red-dim); color:var(--red);
+      border-radius:12px; margin-top:5px; letter-spacing:.5px;
+    }
+    .eachieve { font-size:12px; color:var(--text-muted); margin-top:4px; font-style:italic; }
+
+    /* ── METRICS ── */
+    #metrics { background:var(--ink); }
+    .metrics-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2px; background:rgba(255,255,255,.06); }
+    .mbox { background:var(--ink); padding:2.75rem 2rem; text-align:center; }
+    .mnum { font-family:'Bebas Neue',sans-serif; font-size:4rem; color:var(--red); line-height:1; margin-bottom:.5rem; }
+    .mdesc { font-size:13px; color:var(--muted); line-height:1.55; max-width:180px; margin:0 auto; }
+
+    /* ── SPECIALTIES ── */
+    #specialties { background:var(--card-bg); padding:4.5rem clamp(1.25rem,5vw,3rem); }
+    .tags-wrap { display:flex; flex-wrap:wrap; gap:10px; }
+    .tag {
+      font-size:13px; padding:8px 20px; border-radius:24px;
+      border:1px solid var(--border); color:var(--text-muted); cursor:default;
+      transition:border-color .2s, color .2s, background .2s;
+    }
+    .tag:hover, .tag.h { border-color:var(--red); color:var(--red); background:rgba(255,77,77,.04); }
+
+    /* ── CONNECT (social links) ── */
+    #connect { background:var(--body-bg); }
+    .socials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    .soc-card {
+      display:flex; align-items:center; gap:1rem;
+      background:var(--card-bg); border:.5px solid var(--border);
+      border-radius:14px; padding:1.25rem 1.5rem;
+      text-decoration:none; color:var(--text);
+      transition:border-color .2s, transform .2s;
+    }
+    .soc-card:hover { border-color:var(--red); transform:translateY(-2px); }
+    .soc-icon {
+      width:46px; height:46px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; font-size:1.3rem;
+    }
+    .si-ig  { background:#fce4ec; }
+    .si-yt  { background:#ffebee; }
+    .si-li  { background:#e3f2fd; }
+    .si-fb  { background:#e8eaf6; }
+    .si-wl  { background:#e8f5e9; }
+    .soc-name { font-size:.9rem; font-weight:500; color:var(--text); margin-bottom:2px; }
+    .soc-handle { font-size:12px; color:var(--text-muted); }
+
+    /* ── MANIFESTO ── */
+    #manifesto { background:var(--ink); text-align:center; padding:8rem clamp(1.25rem,5vw,3rem); }
+    .mf-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,77,77,.7); margin-bottom:2.5rem; }
+    .mf-q {
+      font-family:'Bebas Neue',sans-serif; font-size:clamp(2.4rem,6vw,4.8rem);
+      color:var(--cream); line-height:1.08; max-width:860px; margin:0 auto 2rem;
+    }
+    .mf-q .hl { color:var(--red); }
+    .mf-attr { font-size:13px; color:var(--muted); font-style:italic; }
+
+    /* ── CONTACT ── */
+    #contact { background:var(--body-bg); text-align:center; padding:7rem clamp(1.25rem,5vw,3rem); }
+    .ct-eyebrow { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:1.5rem; }
+    .ct-head { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,8vw,6rem); line-height:.9; color:var(--ink); margin-bottom:1.5rem; }
+    .ct-sub { font-size:1rem; color:var(--text-muted); max-width:460px; margin:0 auto 3rem; line-height:1.75; }
+    .ct-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn {
+      font-size:14px; font-weight:500; padding:14px 32px; border-radius:32px;
+      text-decoration:none; letter-spacing:.3px; transition:all .2s;
+      display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none;
+    }
+    .btn-p { background:var(--red); color:#fff; }
+    .btn-p:hover { background:#e03e3e; transform:translateY(-2px); }
+    .btn-o { background:transparent; border:1.5px solid var(--ink); color:var(--ink); }
+    .btn-o:hover { background:var(--ink); color:var(--cream); transform:translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background:var(--ink); padding:2rem clamp(1.25rem,5vw,3rem);
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+    }
+    .flogo { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--cream); letter-spacing:2px; }
+    .flogo span { color:var(--red); }
+    .fcopy { font-size:12px; color:var(--muted); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.on { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:760px) {
+      .nav-links { display:none; }
+      .about-grid { grid-template-columns:1fr; gap:3rem; }
+      .exp-item { grid-template-columns:48px 1fr; }
+      .edate { display:none; }
+      .hero-pills { align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AARISH <span>RANGREZ</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#connect">Connect</a></li>
+    <li><a href="#contact">Hire Me</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/aarish-rangrez/" target="_blank" rel="noopener" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-ring hr1"></div>
+  <div class="hero-ring hr2"></div>
+  <div class="hero-ring hr3"></div>
+  <p class="hero-eyebrow">Social Media Manager &amp; Content Strategist · Haldwani, India</p>
+  <h1 class="hero-name">
+    AARISH
+    <span class="r">RANGREZ</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-tagline">
+      Making brands <strong>unskippable</strong> — through content that stops the scroll,
+      communities that feel like fanbases, and stories worth sharing.
+    </p>
+    <div class="hero-pills">
+      <span class="hero-pill live">Open to work</span>
+      <span class="hero-pill">@ Serri — World's Coolest AI CRM</span>
+      <span class="hero-pill">25k Unique Accounts / Month</span>
+      <span class="hero-pill">30% MoM Growth</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div style="display:flex;white-space:nowrap;overflow:hidden;">
+    <div class="ticker-inner">
+      <span class="tw">Content Strategy</span><span class="ts">●</span>
+      <span class="tw">Brand Storytelling</span><span class="ts">●</span>
+      <span class="tw">Fashion Creator</span><span class="ts">●</span>
+      <span class="tw">Reels &amp; Video</span><span class="ts">●</span>
+      <span class="tw">Community Building</span><span class="ts">●</span>
+      <span class="tw">Social Growth</span><span class="ts">●</span>
+      <span class="tw">Serri AI CRM</span><span class="ts">●</span>
+      <span class="tw">Video Editing</span><span class="ts">●</span>
+      <span class="tw">Outfit Links</span><span class="ts">●</span>
+      <span class="tw">YouTube</span><span class="ts">●</span>
+      <span class="tw">Instagram</span><span class="ts">●</span>
+      <span class="tw">Unskippable Content</span><span class="ts">●</span>
+      <!-- duplicate for seamless loop -->
+      <span class="tw">Content Strategy</span><span class="ts">●</span>
+      <span class="tw">Brand Storytelling</span><span class="ts">●</span>
+      <span class="tw">Fashion Creator</span><span class="ts">●</span>
+      <span class="tw">Reels &amp; Video</span><span class="ts">●</span>
+      <span class="tw">Community Building</span><span class="ts">●</span>
+      <span class="tw">Social Growth</span><span class="ts">●</span>
+      <span class="tw">Serri AI CRM</span><span class="ts">●</span>
+      <span class="tw">Video Editing</span><span class="ts">●</span>
+      <span class="tw">Outfit Links</span><span class="ts">●</span>
+      <span class="tw">YouTube</span><span class="ts">●</span>
+      <span class="tw">Instagram</span><span class="ts">●</span>
+      <span class="tw">Unskippable Content</span><span class="ts">●</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <p class="slabel">About</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-head reveal">
+          The guy who makes<br>
+          brands look<br><span class="a">cooler online.</span>
+        </h2>
+        <p class="about-p reveal">
+          Started as a <strong>fashion content creator</strong> — making reels and videos that turned
+          heads on Instagram and YouTube, showcasing the latest trends, styling tips, and fashion news.
+          Engaged with the community, incorporated viewer feedback, and grew an audience from zero.
+        </p>
+        <p class="about-p reveal">
+          Curiosity (and maybe caffeine) led to <strong>brand storytelling and social media growth</strong>.
+          Now as <strong>Social Media Manager at Serri</strong>, executing content strategies and video
+          campaigns that build brand identity and drive real online presence.
+        </p>
+        <p class="about-p reveal">
+          Along the way: <strong>video editing</strong> for corporate promos, wedding films, environmental
+          advocacy at enSeed, and educational content at SIPWay. Every project — one goal: content that <strong>sticks</strong>.
+        </p>
+      </div>
+      <div class="stats-box reveal">
+        <div class="sbox">
+          <div class="snum">25K</div>
+          <div class="slbl">Unique accounts reached/month</div>
+        </div>
+        <div class="sbox">
+          <div class="snum">30%</div>
+          <div class="slbl">Month-on-month growth</div>
+        </div>
+        <div class="sbox">
+          <div class="snum">50%</div>
+          <div class="slbl">Campaign reach increase (enSeed)</div>
+        </div>
+        <div class="sbox">
+          <div class="snum">20%</div>
+          <div class="slbl">Viewer retention boost (SIPWay)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <p class="slabel lt">What I Do</p>
+    <div class="skills-grid">
+      <div class="skb reveal">
+        <div class="skn-big">01</div>
+        <div class="skname">Social Media Management</div>
+        <div class="skdesc">Managing platforms like a second home. Instagram, YouTube — feeds that actually engage, not just exist.</div>
+      </div>
+      <div class="skb reveal">
+        <div class="skn-big">02</div>
+        <div class="skname">Content Strategy</div>
+        <div class="skdesc">Strategies with a plan behind them — built to get people to care, click, and come back.</div>
+      </div>
+      <div class="skb reveal">
+        <div class="skn-big">03</div>
+        <div class="skname">Brand Storytelling</div>
+        <div class="skdesc">Bringing brand stories to life in a way that's entertaining, relatable, and never boring.</div>
+      </div>
+      <div class="skb reveal">
+        <div class="skn-big">04</div>
+        <div class="skname">Video Editing &amp; Production</div>
+        <div class="skdesc">Corporate promos, wedding films, reels, social content, environmental narratives — full post-production.</div>
+      </div>
+      <div class="skb reveal">
+        <div class="skn-big">05</div>
+        <div class="skname">Fashion Content Creation</div>
+        <div class="skdesc">Original fashion videos, styling tips, trend showcases — content that turns heads on Instagram and YouTube.</div>
+      </div>
+      <div class="skb reveal">
+        <div class="skn-big">06</div>
+        <div class="skname">Community Building</div>
+        <div class="skdesc">Building online communities that feel less like an audience and more like a loyal fanbase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <p class="slabel">Experience</p>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="elogo el-serri">SR</div>
+        <div>
+          <div class="erole">Social Media Manager</div>
+          <div class="ecomp">Serri — World's Coolest AI CRM</div>
+          <span class="ebadge">Current Role</span>
+          <div class="eachieve">Managing video editing for social campaigns · Aligning content with overall brand strategy</div>
+        </div>
+        <div class="edate">2024 – Present</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="elogo el-fc">FC</div>
+        <div>
+          <div class="erole">Fashion Content Creator</div>
+          <div class="ecomp">Instagram &amp; YouTube — Independent</div>
+          <div class="eachieve">25k unique accounts/month · 30% MoM growth · trends, styling tips, fashion news · outfit links via Wishlink</div>
+        </div>
+        <div class="edate">2022 – 2024</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="elogo el-fe">FE</div>
+        <div>
+          <div class="erole">Freelance Video Editor</div>
+          <div class="ecomp">Independent — Multiple Clients</div>
+          <div class="eachieve">Corporate promos · Wedding films · Social media content · Creative consultation for visual storytelling</div>
+        </div>
+        <div class="edate">2022</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="elogo el-ens">EN</div>
+        <div>
+          <div class="erole">Video Editor</div>
+          <div class="ecomp">enSeed — Environmental Advocacy</div>
+          <div class="eachieve">Led post-production for environmental campaigns · <strong style="color:var(--text)">50% increase in campaign reach &amp; engagement</strong></div>
+        </div>
+        <div class="edate">2022</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="elogo el-sip">SP</div>
+        <div>
+          <div class="erole">Video Editor</div>
+          <div class="ecomp">SIPWay — Educational Platforms</div>
+          <div class="eachieve">Educational &amp; instructional video content · <strong style="color:var(--text)">20% increase in viewer retention rates</strong></div>
+        </div>
+        <div class="edate">2020</div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="elogo el-sch">🎓</div>
+        <div>
+          <div class="erole">Student</div>
+          <div class="ecomp">Beersheba Sr. Sec School, Haldwani</div>
+        </div>
+        <div class="edate">Until 2017</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="inner">
+    <p class="slabel lt">Impact by Numbers</p>
+    <div class="metrics-grid">
+      <div class="mbox reveal">
+        <div class="mnum">25K</div>
+        <div class="mdesc">Unique accounts reached every single month as a fashion creator</div>
+      </div>
+      <div class="mbox reveal">
+        <div class="mnum">30%</div>
+        <div class="mdesc">Month-on-month audience growth on Instagram &amp; YouTube</div>
+      </div>
+      <div class="mbox reveal">
+        <div class="mnum">50%</div>
+        <div class="mdesc">Increase in campaign reach &amp; engagement at enSeed</div>
+      </div>
+      <div class="mbox reveal">
+        <div class="mnum">20%</div>
+        <div class="mdesc">Improvement in viewer retention rates at SIPWay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section id="specialties" style="background:#fff;padding:4.5rem clamp(1.25rem,5vw,3rem);">
+  <div class="inner">
+    <p class="slabel">Specialties</p>
+    <div class="tags-wrap reveal">
+      <span class="tag h">Brand Storytelling</span>
+      <span class="tag h">Unskippable Content</span>
+      <span class="tag">Fashion &amp; Styling</span>
+      <span class="tag">Video Editing</span>
+      <span class="tag">Trend Research</span>
+      <span class="tag">Audience Growth</span>
+      <span class="tag">Community Management</span>
+      <span class="tag">Reel Production</span>
+      <span class="tag">Cold Lead Conversion</span>
+      <span class="tag">AI Tools &amp; CRM</span>
+      <span class="tag">Corporate Video Production</span>
+      <span class="tag">Wedding Films</span>
+      <span class="tag">Environmental Advocacy Content</span>
+      <span class="tag">Educational Video</span>
+      <span class="tag">Outfit &amp; Affiliate Linking</span>
+      <span class="tag">Interior Design Niche</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT (all social links) -->
+<section id="connect">
+  <div class="inner">
+    <p class="slabel">Find Me Online</p>
+    <div class="socials-grid">
+
+      <a href="https://www.instagram.com/aarish_rangrez/" target="_blank" rel="noopener" class="soc-card reveal">
+        <div class="soc-icon si-ig">📸</div>
+        <div>
+          <div class="soc-name">Instagram</div>
+          <div class="soc-handle">@aarish_rangrez</div>
+        </div>
+      </a>
+
+      <a href="https://linktw.in/HNxRdC" target="_blank" rel="noopener" class="soc-card reveal">
+        <div class="soc-icon si-yt">▶️</div>
+        <div>
+          <div class="soc-name">YouTube Channel</div>
+          <div class="soc-handle">Fashion &amp; Content Videos</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/aarish-rangrez/" target="_blank" rel="noopener" class="soc-card reveal">
+        <div class="soc-icon si-li">💼</div>
+        <div>
+          <div class="soc-name">LinkedIn</div>
+          <div class="soc-handle">aarish-rangrez</div>
+        </div>
+      </a>
+
+      <a href="https://www.facebook.com/risssh04/" target="_blank" rel="noopener" class="soc-card reveal">
+        <div class="soc-icon si-fb">📘</div>
+        <div>
+          <div class="soc-name">Facebook</div>
+          <div class="soc-handle">risssh04</div>
+        </div>
+      </a>
+
+      <a href="https://www.wishlink.com/aarishrangrez" target="_blank" rel="noopener" class="soc-card reveal">
+        <div class="soc-icon si-wl">🛍️</div>
+        <div>
+          <div class="soc-name">Outfit Links — Wishlink</div>
+          <div class="soc-handle">wishlink.com/aarishrangrez</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="inner">
+    <p class="mf-label">Philosophy</p>
+    <h2 class="mf-q reveal">
+      "Some people call it content creation.<br>
+      I just call it making brands<br>
+      <span class="hl">unskippable.</span>"
+    </h2>
+    <p class="mf-attr">— Aarish Rangrez</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <p class="ct-eyebrow">Get In Touch</p>
+    <h2 class="ct-head reveal">LET'S WORK<br>TOGETHER</h2>
+    <p class="ct-sub reveal">
+      Open to brand collaborations, social media management, content creation,
+      video production, and consulting. Let's make something unskippable.
+    </p>
+    <div class="ct-btns reveal">
+      <a href="https://www.linkedin.com/in/aarish-rangrez/" target="_blank" rel="noopener" class="btn btn-p">Connect on LinkedIn</a>
+      <a href="https://www.instagram.com/aarish_rangrez/" target="_blank" rel="noopener" class="btn btn-o">View Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">AARISH <span>RANGREZ</span></div>
+  <p class="fcopy">© 2025 Aarish Rangrez · Social Media Manager &amp; Content Strategist · Haldwani, India</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    const parent = el.closest('.skills-grid, .exp-list, .about-grid, .metrics-grid, .socials-grid, .stats-box');
+    if (parent) {
+      const siblings = Array.from(parent.querySelectorAll('.reveal'));
+      el.style.transitionDelay = (siblings.indexOf(el) * 0.07) + 's';
+    }
+    obs.observe(el);
+  });
+</script>
+
+</body>
+</html>
